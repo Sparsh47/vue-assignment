@@ -2,6 +2,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/vue/24/outline";
 
+let interval: ReturnType<typeof setInterval>
+
 type BannerItem = {
   id: number;
   title: string;
@@ -19,7 +21,6 @@ const props = defineProps({
 })
 
 const currentIndex = ref(0)
-let interval = null
 
 const next = () => {
   currentIndex.value = (currentIndex.value + 1) % props.slides.length
@@ -34,7 +35,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  clearInterval(interval)
+  if(interval) clearInterval(interval)
 })
 </script>
 

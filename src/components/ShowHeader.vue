@@ -14,7 +14,7 @@ const props = defineProps<Props>()
 
 <template>
   <div class="space-y-8">
-    <img class="w-full h-[300px] md:h-[600px] object-cover rounded-4xl" :src="props?.image.original" :alt="props?.name" />
+    <img class="w-full h-[300px] md:h-[600px] object-cover rounded-4xl" v-if="props.image" :src="props?.image.original" :alt="props?.name" />
 
     <div class="space-y-4">
       <h1 class="text-4xl font-bold">{{ name }}</h1>

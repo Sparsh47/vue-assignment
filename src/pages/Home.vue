@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 <script setup lang="ts">
 import {computed, onMounted, ref, watch} from 'vue'
 import axios from 'axios'
@@ -122,7 +124,7 @@ async function getBannerImages(meta: Omit<BannerItem,'url'>[]) {
   return res
 }
 
-let searchTimeout: NodeJS.Timeout | null = null
+let searchTimeout: ReturnType<typeof setTimeout> | null = null
 watch(query, (newQuery, oldQuery) => {
   if (newQuery === oldQuery) return
 

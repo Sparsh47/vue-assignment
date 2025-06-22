@@ -3,7 +3,7 @@ import { defineProps, defineEmits, computed } from 'vue';
 import { PlusIcon, StarIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 
 const props = defineProps<{
-  id: number | string;
+  id: number;
   imageUrl: string;
   title: string;
   rating: number;
@@ -47,7 +47,7 @@ function onFavClick() {
       <div class="absolute bottom-4 left-4 z-20">
         <h3 class="text-lg font-semibold truncate w-full pr-4">{{ props.title }}</h3>
         <div class="flex items-center mt-1 space-x-1">
-          <template v-for="n in fullStars" :key="`star-full-${n}`">
+          <template v-for="_ in fullStars" :key="`star-full-${_}`">
             <StarIcon class="h-4 w-4 text-yellow-400" />
           </template>
           <template v-if="hasHalfStar">
@@ -58,7 +58,7 @@ function onFavClick() {
               </div>
             </div>
           </template>
-          <template v-for="n in emptyStars" :key="`star-empty-${n}`">
+          <template v-for="_ in emptyStars" :key="`star-empty-${_}`">
             <StarIcon class="h-4 w-4 text-gray-600" />
           </template>
         </div>

@@ -4,7 +4,7 @@ import ShowCard from './ShowCard.vue';
 import {useFavourites} from "../stores/favourites";
 
 interface Movie {
-  id: number | string;
+  id: number;
   title: string;
   posterUrl?: string;
   imageUrl?: string;
@@ -25,7 +25,10 @@ const favStore = useFavourites();
         :title="movie.title"
         :rating="movie.rating"
         :isFavorite="!!favStore.favouriteMovies.find(s => s.id === movie.id)"
-        @add-fav="favStore.addToFavouriteMovies($event)"
+        @add-fav="favStore.addToFavouriteMovies({
+          ...$event,
+          id: Number($event.id)
+        })"
         @remove-fav="favStore.removeFromFavouriteMovies(movie.id)"
     />
   </div>
